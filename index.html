@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		body{
+			background-color: skyblue;
+			text-align: center;
+			background-image: url(https://images.unsplash.com/photo-1579546928686-286c9fbde1ec?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y29sb3IlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&w=1000&q=80);
+			margin-top: 15%;
+		}
+		.local{
+			color: skyblue;
+			background-color: white;
+			font-size: 25px;
+			margin-radius: 30%;
+			border-radius:20%;
+		}
+		.copy{
+			font-size: 20px;
+			padding:5%,4%,4%,5%;
+			background-color: pink;
+			color: brown;
+		}
+		.paste{
+			font-size: 20px;
+			padding:5%,4%,4%,5%;
+			background-color: skyblue;
+			color:violet;
+
+		}
+		.main{
+			font-size: 20px;
+			padding:5%,4%,4%,5%;
+			background-color: whitesmoke;
+			color: brown;
+		}
+	</style>
+</head>
+<body>
+	<h1 id="page">Registration page</h1>
+	<input class="copy" id="username" placeholder ="enter username"/>
+<p><input class="paste" id="password" placeholder=" enter password"/></p>
+	<p><select id="main">
+	<option value="select a course">select a course</option>
+	<option value="BCA">BCA</option>
+	<option value="MSCS">MSCS</option>
+	</select></p>
+	<p><input type="radio" id="male" name="gender">male</input>
+	<input type="radio" name="gender" id="female">female</input></p>
+	<button class="local" onclick="local()">sumbit</button>
+	<script type="text/javascript">
+		function local(){
+			var username=document.getElementById("username").value
+			var password=document.getElementById("password").value
+			var gmale=document.getElementById("male").checked
+			var gfemale=document.getElementById("female").checked
+			console.log(gmale.gfemale)
+			if(gmale==true) var gender="male"
+			else var gender="female"
+			fetch("http://localhost:4000/newData",{
+			method:"POST",
+			headers:{
+				"Content-Type":"application/json"
+			},
+			body:JSON.stringify({name:username,age:password,gender:gender
+				select:course})
+		})
+			.then((res)=>{
+				consloe.log(res)
+				if(res.status===200)
+					alert("Data Added")
+			})
+			.catch((err)=>{
+				console.log("API created")
+			})
+	}
+	
+</script>
+</body>
+</html>
